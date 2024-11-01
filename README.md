@@ -48,5 +48,42 @@ Set source: Open to "Anywhere".
 ### 2.7 Launch Your Instance
 - Review your configuration settings and click on Launch.
 
+## Step 3: Configure Node.js and Express on the EC2 Instance
+### 3.1 Connecting to Your EC2 Instance
+- Open your terminal and connect to your EC2 instance via SSH using this command:
+![Connecting to an EC2 instance via SSH](/Pictures/Screenshot%20from%202024-11-01%2009-01-09.png)
+- Replace the **<path to your .pem file>**, and **<public_ip>** with your EC2 instance’s public IP address.
+![Successful Connection](/Pictures/Screenshot%20from%202024-11-01%2009-10-49.png)
 
+### 3.2 Update and Install Node.js
+- Update the package list on your EC2 instance to ensure you’re installing the latest versions:
 
+![Updating packages](/Pictures/Screenshot%20from%202024-11-01%2010-08-55.png)
+- Install Node.js using the following commands:
+![Installing Node.js](/Pictures/Screenshot%20from%202024-11-01%2011-22-16.png)
+
+### 3.3 Install the express generator
+- The express generator allows you to create a basic Express.js application skeleton. This will save you from writing all the boilerplate code manually.
+![Install express](/Pictures/Screenshot%20from%202024-11-01%2011-31-53.png)
+### 3.4 Generate an Express Application 
+- Create a new Express App and call it myExpressApp.
+- We will be using Pug, which is template engine for Node.js which simplifies writing HTML.
+![Express Application](/Pictures/Screenshot%20from%202024-11-01%2011-43-57.png)
+
+### 3.5 Install Application Dependencies
+- Navigate to the Application Directory.
+
+  ![Directory Navigation](/Pictures/Screenshot%20from%202024-11-01%2012-49-24.png)
+
+- Install dependencies.
+  - This reads your **package.json** file, downloads all required packages the app requires to run, and creates a **node_modules** folder, where all these dependencies are stored.
+  ![Application Dependencies](/Pictures/Screenshot%20from%202024-11-01%2012-10-53.png)
+
+### 3.6 Run the Application
+  - Use the following command to start the Express Application.
+  ![Start Application](/Pictures/Screenshot%20from%202024-11-01%2012-37-41.png)
+  - Since we had modified the inbound rules for our instance and added a custom TCP for port range 3000 [here](#26-configure-security-group), you should be able to access your app at http://<public_ip>:3000 in your browser.
+![Browser output](/Pictures/Screenshot%20from%202024-11-01%2012-39-10%20(1).png)
+
+- The "Welcome to Express" is a default text that shows up when you create a new Express app using the Express generator.
+- The message is stored in a file called **index.pug**, which is in the **views** folder of your project, and you can edit it and restart your app to see the new message in the browser.
